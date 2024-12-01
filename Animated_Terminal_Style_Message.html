@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şifre Korumalı Terminal</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: "Courier New", Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #terminal {
+            width: 80%;
+            max-width: 800px;
+            height: 400px;
+            border: 2px solid #00ff00;
+            padding: 10px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            text-align: left;
+            font-size: 16px;
+        }
+        input {
+            background-color: black;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            font-size: 16px;
+            padding: 5px;
+            outline: none;
+            margin-top: 10px;
+        }
+        button {
+            background-color: black;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            font-size: 16px;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #00ff00;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal"></div>
+    <input type="password" id="password" placeholder="Şifre" />
+    <button onclick="startTerminal()">Göster</button>
+    <script>
+        const message = `
+Candan,
+
+Gerçek başarı, cesaretle kendi yolunu çizmek ve sınırlarını aşarak hayallerine ulaşmaktır.
+Tıpkı "Martı Jonathan Livingston" gibi, senin de azmin ve kararlılığınla her zaman daha yükseklere uçacağına inanıyorum.
+
+Bu kitap, yolculuğunda sana ilham ve rehberlik etsin. Başarılarının devamını tüm kalbimle diliyorum.
+
+MÇ
+`;
+
+        function startTerminal() {
+            const input = document.getElementById("password").value;
+            const correctPassword = "CandanK.2025";
+            const terminal = document.getElementById("terminal");
+            terminal.innerHTML = ""; // Clear terminal
+            
+            if (input === correctPassword) {
+                let i = 0;
+                function typeEffect() {
+                    if (i < message.length) {
+                        terminal.innerHTML += message[i];
+                        i++;
+                        setTimeout(typeEffect, 50); // Adjust typing speed here
+                    }
+                }
+                typeEffect();
+            } else {
+                alert("Yanlış şifre!");
+            }
+        }
+    </script>
+</body>
+</html>
